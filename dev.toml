@@ -1,0 +1,270 @@
+[[build]]
+name = "komodo-binaries-dev-aarch64"
+tags = ["dev", "binaries", "aarch64"]
+[build.config]
+builder = "aarch64-builder"
+version = "1.19.1"
+auto_increment_version = false
+image_name = "komodo-binaries"
+image_tag = "dev-aarch64"
+links = [
+  "https://github.com/moghtech/komodo/pkgs/container/komodo-binaries"
+]
+repo = "moghtech/komodo"
+branch = "1.19.1"
+dockerfile_path = "bin/binaries.Dockerfile"
+image_registry = [
+  { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
+]
+
+##
+
+[[build]]
+name = "komodo-binaries-dev-x86_64"
+tags = ["dev", "binaries", "x86_64"]
+[build.config]
+builder = "x86_64-builder"
+version = "1.19.1"
+auto_increment_version = false
+image_name = "komodo-binaries"
+image_tag = "dev-x86_64"
+links = [
+  "https://github.com/moghtech/komodo/pkgs/container/komodo-binaries"
+]
+repo = "moghtech/komodo"
+branch = "1.19.1"
+dockerfile_path = "bin/binaries.Dockerfile"
+image_registry = [
+  { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
+]
+
+##
+
+[[build]]
+name = "komodo-cli-dev"
+description = """
+OPEN FOR INSTRUCTIONS
+
+Must run the following command on host to create the builder:
+'docker buildx create --name builder --use --bootstrap'
+"""
+tags = ["dev", "cli"]
+[build.config]
+builder = "x86_64-builder"
+version = "1.19.1"
+auto_increment_version = false
+image_name = "komodo-cli"
+image_tag = "dev"
+links = [
+  "https://github.com/moghtech/komodo/pkgs/container/komodo-cli"
+]
+repo = "moghtech/komodo"
+branch = "1.19.1"
+dockerfile_path = "bin/cli/multi-arch.Dockerfile"
+image_registry = [
+  { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" },
+  { domain = "docker.io", account = "moghtech" }
+]
+extra_args = [
+  "--platform linux/amd64,linux/arm64",
+  "--builder builder"
+]
+pre_build.command = """
+  docker buildx create --name builder --use --bootstrap
+"""
+build_args = """
+  BINARIES_IMAGE = ghcr.io/moghtech/komodo-binaries:latest-dev
+"""
+
+##
+
+[[build]]
+name = "komodo-core-dev"
+description = """
+OPEN FOR INSTRUCTIONS
+
+Must run the following command on host to create the builder:
+'docker buildx create --name builder --use --bootstrap'
+"""
+tags = ["dev", "core"]
+[build.config]
+builder = "x86_64-builder"
+version = "1.19.1"
+auto_increment_version = false
+image_name = "komodo-core"
+image_tag = "dev"
+links = [
+  "https://github.com/moghtech/komodo/pkgs/container/komodo-core"
+]
+repo = "moghtech/komodo"
+branch = "1.19.1"
+dockerfile_path = "bin/core/multi-arch.Dockerfile"
+image_registry = [
+  { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" },
+  { domain = "docker.io", account = "moghtech" }
+]
+extra_args = [
+  "--platform linux/amd64,linux/arm64",
+  "--builder builder"
+]
+pre_build.command = """
+  docker buildx create --name builder --use --bootstrap
+"""
+build_args = """
+  BINARIES_IMAGE = ghcr.io/moghtech/komodo-binaries:latest-dev
+  FRONTEND_IMAGE = ghcr.io/moghtech/komodo-frontend:latest-dev
+"""
+
+##
+
+[[build]]
+name = "komodo-frontend-dev"
+tags = ["dev", "frontend"]
+[build.config]
+builder = "x86_64-builder"
+version = "1.19.1"
+auto_increment_version = false
+image_name = "komodo-frontend"
+image_tag = "dev"
+links = [
+  "https://github.com/moghtech/komodo/pkgs/container/komodo-frontend"
+]
+repo = "moghtech/komodo"
+branch = "1.19.1"
+dockerfile_path = "frontend/Dockerfile"
+image_registry = [
+  { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
+]
+
+##
+
+[[build]]
+name = "komodo-periphery-dev"
+description = """
+OPEN FOR INSTRUCTIONS
+
+Must run the following command on host to create the builder:
+'docker buildx create --name builder --use --bootstrap'
+"""
+tags = ["dev", "periphery"]
+[build.config]
+builder = "x86_64-builder"
+version = "1.19.1"
+auto_increment_version = false
+image_name = "komodo-periphery"
+image_tag = "dev"
+links = [
+  "https://github.com/moghtech/komodo/pkgs/container/komodo-periphery"
+]
+repo = "moghtech/komodo"
+branch = "1.19.1"
+dockerfile_path = "bin/periphery/multi-arch.Dockerfile"
+image_registry = [
+  { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" },
+  { domain = "docker.io", account = "moghtech" }
+]
+extra_args = [
+  "--platform linux/amd64,linux/arm64",
+  "--builder builder"
+]
+pre_build.command = """
+  docker buildx create --name builder --use --bootstrap
+"""
+build_args = """
+  BINARIES_IMAGE = ghcr.io/moghtech/komodo-binaries:latest-dev
+"""
+
+##
+
+[[repo]]
+name = "upload-binaries-dev"
+tags = ["dev", "binaries"]
+[repo.config]
+builder = "x86_64-builder"
+git_provider = "forge.mogh.tech"
+repo = "komodo/build"
+on_clone.command = """
+bash ./upload-binaries.sh \
+  [[KOMODO_DEV_TAG]] \
+  ghcr.io/moghtech/komodo-binaries:latest-dev \
+  [[KOMODO_DEV_VERSION]] \
+  [[KOMODO_GIT_TOKEN]]
+"""
+
+##
+
+[[procedure]]
+name = "build-dev"
+tags = ["dev"]
+
+[[procedure.config.stage]]
+name = "Build Binaries + Frontend"
+enabled = true
+executions = [
+  { execution.type = "RunBuild", execution.params.build = "komodo-binaries-dev-x86_64", enabled = true },
+  { execution.type = "RunBuild", execution.params.build = "komodo-binaries-dev-aarch64", enabled = true },
+  { execution.type = "RunBuild", execution.params.build = "komodo-frontend-dev", enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "Build Multi Arch + Upload Binaries"
+enabled = true
+executions = [
+  { execution.type = "RunBuild", execution.params.build = "komodo-core-dev", enabled = true },
+  { execution.type = "RunBuild", execution.params.build = "komodo-periphery-dev", enabled = true },
+  { execution.type = "RunBuild", execution.params.build = "komodo-cli-dev", enabled = true },
+  { execution.type = "BuildRepo", execution.params.repo = "upload-binaries-dev", enabled = true }
+]
+
+##
+
+[[action]]
+name = "publish-dev"
+tags = ["dev"]
+[action.config]
+file_contents = """
+const BRANCH = "1.19.1";
+const VERSION = "1.19.1";
+const TAG = "dev-14";
+
+await komodo.write("UpdateVariableValue", {
+  name: "KOMODO_DEV_VERSION",
+  value: VERSION,
+});
+console.log("Updated KOMODO_DEV_VERSION to", VERSION);
+
+await komodo.write("UpdateVariableValue", {
+  name: "KOMODO_DEV_TAG",
+  value: TAG,
+});
+console.log("Updated KOMODO_DEV_TAG to", TAG);
+
+const builds = await komodo.read("ListBuilds", { query: { tags: ["dev"] } });
+
+for (const build of builds) {
+  await komodo.write("UpdateBuild", {
+    id: build.id,
+    config: { version: VERSION as any, branch: BRANCH },
+  });
+  console.log("Updated", build.name);
+}
+
+await komodo.write("CommitSync", { sync: "dev" });
+console.log("Committed changes to 'dev' Sync");
+
+await komodo.execute("RunProcedure", { procedure: "build-dev" });
+console.log("Launched 'build-dev' Procedure");
+"""
+
+##
+
+[[resource_sync]]
+name = "dev"
+tags = ["dev"]
+[resource_sync.config]
+git_provider = "forge.mogh.tech"
+repo = "komodo/build"
+git_account = "mbecker20"
+resource_path = ["dev.toml"]
+managed = true
+match_tags = ["dev"]

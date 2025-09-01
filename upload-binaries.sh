@@ -36,7 +36,7 @@ upload() {
 
 upload "core"
 upload "periphery"
-upload "cli"
+upload "km"
 
 docker container rm $x86_64_id
 docker container rm $aarch64_id

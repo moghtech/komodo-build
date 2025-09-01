@@ -223,9 +223,7 @@ console.log("Launched 'build-release' Procedure");
 name = "release"
 tags = ["release"]
 [resource_sync.config]
-git_provider = "forge.mogh.tech"
-repo = "komodo/build"
-git_account = "mbecker20"
+linked_repo = "komodo/build"
 resource_path = ["release.toml"]
 managed = true
 match_tags = ["release"]

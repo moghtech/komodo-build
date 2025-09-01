@@ -49,9 +49,7 @@ curl -sSL https://raw.githubusercontent.com/mbecker20/komodo/main/scripts/setup-
 name = "builders"
 tags = ["builder"]
 [resource_sync.config]
-git_provider = "forge.mogh.tech"
-repo = "komodo/build"
-git_account = "mbecker20"
+linked_repo = "komodo/build"
 resource_path = ["builders.toml"]
 managed = true
 match_tags = ["builder"]

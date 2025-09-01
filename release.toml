@@ -149,7 +149,7 @@ bash ./upload-binaries.sh \
   [[KOMODO_RELEASE_TAG]] \
   ghcr.io/moghtech/komodo-binaries:latest \
   [[KOMODO_RELEASE_VERSION]] \
-  [[KOMODO_GIT_TOKEN]]
+  [[MOGH_FORGE_TOKEN]]
 """
 
 ##

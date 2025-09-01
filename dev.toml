@@ -188,7 +188,7 @@ bash ./upload-binaries.sh \
   [[KOMODO_DEV_TAG]] \
   ghcr.io/moghtech/komodo-binaries:latest-dev \
   [[KOMODO_DEV_VERSION]] \
-  [[KOMODO_GIT_TOKEN]]
+  [[MOGH_FORGE_TOKEN]]
 """
 
 ##

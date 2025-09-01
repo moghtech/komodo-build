@@ -262,9 +262,7 @@ console.log("Launched 'build-dev' Procedure");
 name = "dev"
 tags = ["dev"]
 [resource_sync.config]
-git_provider = "forge.mogh.tech"
-repo = "komodo/build"
-git_account = "mbecker20"
+linked_repo = "komodo/build"
 resource_path = ["dev.toml"]
 managed = true
 match_tags = ["dev"]

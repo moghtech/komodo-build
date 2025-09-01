@@ -34,12 +34,6 @@ image_registry = [
 
 [[build]]
 name = "komodo-cli"
-description = """
-OPEN FOR INSTRUCTIONS
-
-Must run the following command on host to create the builder:
-'docker buildx create --name builder --use --bootstrap'
-"""
 tags = ["release", "cli"]
 [build.config]
 builder = "x86_64-builder"
@@ -66,12 +60,6 @@ pre_build.command = """
 
 [[build]]
 name = "komodo-core"
-description = """
-OPEN FOR INSTRUCTIONS
-
-Must run the following command on host to create the builder:
-'docker buildx create --name builder --use --bootstrap'
-"""
 tags = ["release", "core"]
 [build.config]
 builder = "x86_64-builder"
@@ -110,12 +98,6 @@ image_registry = [
 
 [[build]]
 name = "komodo-periphery"
-description = """
-OPEN FOR INSTRUCTIONS
-
-Must run the following command to create the builder:
-'docker buildx create --name builder --use --bootstrap'
-"""
 tags = ["release", "periphery"]
 [build.config]
 builder = "x86_64-builder"

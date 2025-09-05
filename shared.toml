@@ -1,6 +1,16 @@
+[[repo]]
+name = "komodo/build"
+tags = ["shared"]
+[repo.config]
+git_provider = "forge.mogh.tech"
+git_account = "mbecker20"
+repo = "komodo/build"
+
+##
+
 [[builder]]
 name = "aarch64-builder"
-tags = ["builder"]
+tags = ["shared"]
 [builder.config]
 type = "Aws"
 params.region = "us-east-2"
@@ -18,17 +28,8 @@ curl -sSL https://raw.githubusercontent.com/mbecker20/komodo/main/scripts/setup-
 ##
 
 [[builder]]
-name = "local"
-tags = ["builder"]
-[builder.config]
-type = "Url"
-params.address = "https://5.78.109.179:8120"
-
-##
-
-[[builder]]
 name = "x86_64-builder"
-tags = ["builder"]
+tags = ["shared"]
 [builder.config]
 type = "Aws"
 params.region = "us-east-2"
@@ -42,3 +43,14 @@ params.security_group_ids = ["sg-0babe545ecfb49c9b"]
 params.user_data = """
 #!/bin/bash
 curl -sSL https://raw.githubusercontent.com/mbecker20/komodo/main/scripts/setup-periphery.py | HOME=/root python3"""
+
+##
+
+[[resource_sync]]
+name = "shared"
+tags = ["shared"]
+[resource_sync.config]
+linked_repo = "komodo/build"
+resource_path = ["shared.toml"]
+managed = true
+match_tags = ["shared"]

@@ -29,6 +29,7 @@ version = "1.19.1"
 auto_increment_version = false
 image_name = "komodo-binaries"
 image_tag = "dev-x86_64"
+include_latest_tag = false
 links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-binaries"
 ]
@@ -56,6 +57,7 @@ version = "1.19.1"
 auto_increment_version = false
 image_name = "komodo-cli"
 image_tag = "dev"
+include_latest_tag = false
 links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-cli"
 ]
@@ -94,6 +96,7 @@ version = "1.19.1"
 auto_increment_version = false
 image_name = "komodo-core"
 image_tag = "dev"
+include_latest_tag = false
 links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-core"
 ]
@@ -127,6 +130,7 @@ version = "1.19.1"
 auto_increment_version = false
 image_name = "komodo-frontend"
 image_tag = "dev"
+include_latest_tag = false
 links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-frontend"
 ]
@@ -154,6 +158,7 @@ version = "1.19.1"
 auto_increment_version = false
 image_name = "komodo-periphery"
 image_tag = "dev"
+include_latest_tag = false
 links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-periphery"
 ]

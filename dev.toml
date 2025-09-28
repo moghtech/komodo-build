@@ -7,6 +7,7 @@ version = "1.19.1"
 auto_increment_version = false
 image_name = "komodo-binaries"
 image_tag = "dev-aarch64"
+include_latest_tag = false
 links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-binaries"
 ]

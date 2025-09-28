@@ -3,7 +3,7 @@ name = "komodo-binaries-dev-aarch64"
 tags = ["dev", "binaries", "aarch64"]
 [build.config]
 builder = "aarch64-builder"
-version = "1.19.1"
+version = "2.0.0"
 auto_increment_version = false
 image_name = "komodo-binaries"
 image_tag = "dev-aarch64"
@@ -12,7 +12,7 @@ links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-binaries"
 ]
 repo = "moghtech/komodo"
-branch = "1.19.1"
+branch = "2.0.0"
 dockerfile_path = "bin/binaries.Dockerfile"
 image_registry = [
   { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
@@ -25,7 +25,7 @@ name = "komodo-binaries-dev-x86_64"
 tags = ["dev", "binaries", "x86_64"]
 [build.config]
 builder = "x86_64-builder"
-version = "1.19.1"
+version = "2.0.0"
 auto_increment_version = false
 image_name = "komodo-binaries"
 image_tag = "dev-x86_64"
@@ -34,7 +34,7 @@ links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-binaries"
 ]
 repo = "moghtech/komodo"
-branch = "1.19.1"
+branch = "2.0.0"
 dockerfile_path = "bin/binaries.Dockerfile"
 image_registry = [
   { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
@@ -53,7 +53,7 @@ Must run the following command on host to create the builder:
 tags = ["dev", "cli"]
 [build.config]
 builder = "x86_64-builder"
-version = "1.19.1"
+version = "2.0.0"
 auto_increment_version = false
 image_name = "komodo-cli"
 image_tag = "dev"
@@ -62,7 +62,7 @@ links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-cli"
 ]
 repo = "moghtech/komodo"
-branch = "1.19.1"
+branch = "2.0.0"
 dockerfile_path = "bin/cli/multi-arch.Dockerfile"
 image_registry = [
   { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" },
@@ -92,7 +92,7 @@ Must run the following command on host to create the builder:
 tags = ["dev", "core"]
 [build.config]
 builder = "x86_64-builder"
-version = "1.19.1"
+version = "2.0.0"
 auto_increment_version = false
 image_name = "komodo-core"
 image_tag = "dev"
@@ -101,7 +101,7 @@ links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-core"
 ]
 repo = "moghtech/komodo"
-branch = "1.19.1"
+branch = "2.0.0"
 dockerfile_path = "bin/core/multi-arch.Dockerfile"
 image_registry = [
   { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" },
@@ -126,7 +126,7 @@ name = "komodo-frontend-dev"
 tags = ["dev", "frontend"]
 [build.config]
 builder = "x86_64-builder"
-version = "1.19.1"
+version = "2.0.0"
 auto_increment_version = false
 image_name = "komodo-frontend"
 image_tag = "dev"
@@ -135,7 +135,7 @@ links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-frontend"
 ]
 repo = "moghtech/komodo"
-branch = "1.19.1"
+branch = "2.0.0"
 dockerfile_path = "frontend/Dockerfile"
 image_registry = [
   { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
@@ -154,7 +154,7 @@ Must run the following command on host to create the builder:
 tags = ["dev", "periphery"]
 [build.config]
 builder = "x86_64-builder"
-version = "1.19.1"
+version = "2.0.0"
 auto_increment_version = false
 image_name = "komodo-periphery"
 image_tag = "dev"
@@ -163,7 +163,7 @@ links = [
   "https://github.com/moghtech/komodo/pkgs/container/komodo-periphery"
 ]
 repo = "moghtech/komodo"
-branch = "1.19.1"
+branch = "2.0.0"
 dockerfile_path = "bin/periphery/multi-arch.Dockerfile"
 image_registry = [
   { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" },
@@ -229,9 +229,9 @@ name = "publish-dev"
 tags = ["dev"]
 [action.config]
 file_contents = """
-const BRANCH = "1.19.1";
-const VERSION = "1.19.1";
-const TAG = "dev-14";
+const BRANCH = "2.0.0";
+const VERSION = "2.0.0";
+const TAG = "dev-13";
 
 await komodo.write("UpdateVariableValue", {
   name: "KOMODO_DEV_VERSION",

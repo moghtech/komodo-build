@@ -192,7 +192,7 @@ repo = "komodo/build"
 on_clone.command = """
 bash ./upload-binaries.sh \
   [[KOMODO_DEV_TAG]] \
-  ghcr.io/moghtech/komodo-binaries:latest-dev \
+  ghcr.io/moghtech/komodo-binaries:dev \
   [[KOMODO_DEV_VERSION]] \
   [[MOGH_FORGE_TOKEN]]
 """
@@ -231,7 +231,7 @@ tags = ["dev"]
 file_contents = """
 const BRANCH = "2.0.0";
 const VERSION = "2.0.0";
-const TAG = "dev-13";
+const TAG = "dev-17";
 
 await komodo.write("UpdateVariableValue", {
   name: "KOMODO_DEV_VERSION",

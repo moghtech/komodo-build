@@ -34,7 +34,6 @@ upload() {
         https://forge.mogh.tech/api/packages/komodo/generic/$bin_name/$KOMODO_VERSION-$TAG/$bin_name-aarch64
 }
 
-upload "core"
 upload "periphery"
 upload "km"
 

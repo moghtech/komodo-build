@@ -71,3 +71,25 @@ linked_repo = "komodo/build"
 resource_path = ["shared.toml"]
 managed = true
 match_tags = ["shared"]
+
+##
+
+[[resource_sync]]
+name = "dev"
+tags = ["shared"]
+[resource_sync.config]
+linked_repo = "komodo/build"
+resource_path = ["dev.toml"]
+managed = true
+match_tags = ["shared"]
+
+##
+
+[[resource_sync]]
+name = "release"
+tags = ["shared"]
+[resource_sync.config]
+linked_repo = "komodo/build"
+resource_path = ["release.toml"]
+managed = true
+match_tags = ["shared"]

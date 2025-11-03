@@ -261,14 +261,3 @@ console.log("Committed changes to 'dev' Sync");
 await komodo.execute("RunProcedure", { procedure: "build-dev" });
 console.log("Launched 'build-dev' Procedure");
 """
-
-##
-
-[[resource_sync]]
-name = "dev"
-tags = ["dev"]
-[resource_sync.config]
-linked_repo = "komodo/build"
-resource_path = ["dev.toml"]
-managed = true
-match_tags = ["dev"]

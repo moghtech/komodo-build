@@ -8,6 +8,21 @@ repo = "komodo/build"
 
 ##
 
+[[procedure]]
+name = "Backup Core Database"
+description = "Triggers the Core database backup at the scheduled time."
+tags = ["shared"]
+config.schedule = "Every day at 01:00"
+
+[[procedure.config.stage]]
+name = "Stage 1"
+enabled = true
+executions = [
+  { execution.type = "BackupCoreDatabase", execution.params = {}, enabled = true }
+]
+
+##
+
 [[builder]]
 name = "aarch64-builder"
 tags = ["shared"]
@@ -24,6 +39,7 @@ params.security_group_ids = ["sg-0babe545ecfb49c9b"]
 params.user_data = """
 #!/bin/bash
 curl -sSL https://raw.githubusercontent.com/mbecker20/komodo/main/scripts/setup-periphery.py | HOME=/root python3"""
+params.insecure_tls = false
 
 ##
 
@@ -43,6 +59,7 @@ params.security_group_ids = ["sg-0babe545ecfb49c9b"]
 params.user_data = """
 #!/bin/bash
 curl -sSL https://raw.githubusercontent.com/mbecker20/komodo/main/scripts/setup-periphery.py | HOME=/root python3"""
+params.insecure_tls = false
 
 ##
 

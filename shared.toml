@@ -3,7 +3,7 @@ name = "komodo/build"
 tags = ["shared"]
 [repo.config]
 git_provider = "forge.mogh.tech"
-git_account = "mbecker20"
+git_account = "max"
 repo = "komodo/build"
 
 ##

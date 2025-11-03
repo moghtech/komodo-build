@@ -198,14 +198,3 @@ console.log("Committed changes to 'release' Sync");
 await komodo.execute("RunProcedure", { procedure: "build-release" });
 console.log("Launched 'build-release' Procedure");
 """
-
-##
-
-[[resource_sync]]
-name = "release"
-tags = ["release"]
-[resource_sync.config]
-linked_repo = "komodo/build"
-resource_path = ["release.toml"]
-managed = true
-match_tags = ["release"]

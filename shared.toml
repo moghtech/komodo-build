@@ -81,7 +81,7 @@ tags = ["shared"]
 linked_repo = "komodo/build"
 resource_path = ["dev.toml"]
 managed = true
-match_tags = ["shared"]
+match_tags = ["dev"]
 
 ##
 
@@ -92,4 +92,4 @@ tags = ["shared"]
 linked_repo = "komodo/build"
 resource_path = ["release.toml"]
 managed = true
-match_tags = ["shared"]
+match_tags = ["release"]

@@ -122,28 +122,6 @@ build_args = """
 ##
 
 [[build]]
-name = "komodo-ui-dev"
-tags = ["dev", "ui"]
-[build.config]
-builder = "x86_64-builder"
-version = "2.0.0"
-auto_increment_version = false
-image_name = "komodo-ui"
-image_tag = "dev"
-include_latest_tag = false
-links = [
-  "https://github.com/moghtech/komodo/pkgs/container/komodo-ui"
-]
-repo = "moghtech/komodo"
-branch = "2.0.0"
-dockerfile_path = "ui/Dockerfile"
-image_registry = [
-  { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
-]
-
-##
-
-[[build]]
 name = "komodo-periphery-dev"
 description = """
 OPEN FOR INSTRUCTIONS
@@ -179,6 +157,28 @@ pre_build.command = """
 build_args = """
   BINARIES_IMAGE = ghcr.io/moghtech/komodo-binaries:dev
 """
+
+##
+
+[[build]]
+name = "komodo-ui-dev"
+tags = ["dev", "ui"]
+[build.config]
+builder = "x86_64-builder"
+version = "2.0.0"
+auto_increment_version = false
+image_name = "komodo-ui"
+image_tag = "dev"
+include_latest_tag = false
+links = [
+  "https://github.com/moghtech/komodo/pkgs/container/komodo-ui"
+]
+repo = "moghtech/komodo"
+branch = "2.0.0"
+dockerfile_path = "ui/Dockerfile"
+image_registry = [
+  { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
+]
 
 ##
 
@@ -231,7 +231,7 @@ tags = ["dev"]
 file_contents = """
 const BRANCH = "2.0.0";
 const VERSION = "2.0.0";
-const TAG = "dev-118";
+const TAG = "dev-120";
 
 await komodo.write("UpdateVariableValue", {
   name: "KOMODO_DEV_VERSION",

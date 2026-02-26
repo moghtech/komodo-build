@@ -116,27 +116,27 @@ pre_build.command = """
 """
 build_args = """
   BINARIES_IMAGE = ghcr.io/moghtech/komodo-binaries:dev
-  FRONTEND_IMAGE = ghcr.io/moghtech/komodo-frontend:dev
+  UI_IMAGE = ghcr.io/moghtech/komodo-ui:dev
 """
 
 ##
 
 [[build]]
-name = "komodo-frontend-dev"
-tags = ["dev", "frontend"]
+name = "komodo-ui-dev"
+tags = ["dev", "ui"]
 [build.config]
 builder = "x86_64-builder"
 version = "2.0.0"
 auto_increment_version = false
-image_name = "komodo-frontend"
+image_name = "komodo-ui"
 image_tag = "dev"
 include_latest_tag = false
 links = [
-  "https://github.com/moghtech/komodo/pkgs/container/komodo-frontend"
+  "https://github.com/moghtech/komodo/pkgs/container/komodo-ui"
 ]
 repo = "moghtech/komodo"
 branch = "2.0.0"
-dockerfile_path = "frontend/Dockerfile"
+dockerfile_path = "ui/Dockerfile"
 image_registry = [
   { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
 ]
@@ -204,12 +204,12 @@ name = "build-dev"
 tags = ["dev"]
 
 [[procedure.config.stage]]
-name = "Build Binaries + Frontend"
+name = "Build Binaries + UI"
 enabled = true
 executions = [
   { execution.type = "RunBuild", execution.params.build = "komodo-binaries-dev-x86_64", enabled = true },
   { execution.type = "RunBuild", execution.params.build = "komodo-binaries-dev-aarch64", enabled = true },
-  { execution.type = "RunBuild", execution.params.build = "komodo-frontend-dev", enabled = true }
+  { execution.type = "RunBuild", execution.params.build = "komodo-ui-dev", enabled = true }
 ]
 
 [[procedure.config.stage]]

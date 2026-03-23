@@ -82,14 +82,14 @@ pre_build.command = """
 ##
 
 [[build]]
-name = "komodo-frontend"
-tags = ["release", "frontend"]
+name = "komodo-ui"
+tags = ["release", "ui"]
 [build.config]
 builder = "x86_64-builder"
 version = "1.19.5"
 auto_increment_version = false
 repo = "moghtech/komodo"
-dockerfile_path = "frontend/Dockerfile"
+dockerfile_path = "ui/Dockerfile"
 image_registry = [
   { domain = "ghcr.io", account = "mbecker20", organization = "moghtech" }
 ]
@@ -141,12 +141,12 @@ name = "build-release"
 tags = ["release"]
 
 [[procedure.config.stage]]
-name = "Build Binaries + Frontend"
+name = "Build Binaries + UI"
 enabled = true
 executions = [
   { execution.type = "RunBuild", execution.params.build = "komodo-binaries-x86_64", enabled = true },
   { execution.type = "RunBuild", execution.params.build = "komodo-binaries-aarch64", enabled = true },
-  { execution.type = "RunBuild", execution.params.build = "komodo-frontend", enabled = true }
+  { execution.type = "RunBuild", execution.params.build = "komodo-ui", enabled = true }
 ]
 
 [[procedure.config.stage]]

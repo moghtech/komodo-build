@@ -135,7 +135,7 @@ repo = "komodo/build"
 on_clone.command = """
 bash ./upload-binaries.sh \
   [[KOMODO_RELEASE_TAG]] \
-  ghcr.io/moghtech/komodo-binaries:latest \
+  ghcr.io/moghtech/komodo-binaries:2 \
   [[KOMODO_RELEASE_VERSION]] \
   [[MOGH_FORGE_TOKEN]]
 """
@@ -163,6 +163,26 @@ executions = [
   { execution.type = "RunBuild", execution.params.build = "komodo-periphery", enabled = true },
   { execution.type = "RunBuild", execution.params.build = "komodo-cli", enabled = true },
   { execution.type = "BuildRepo", execution.params.repo = "upload-binaries", enabled = true }
+]
+
+##
+
+[[procedure]]
+name = "build-release-ui-only"
+tags = ["release", "ui"]
+
+[[procedure.config.stage]]
+name = "Build UI"
+enabled = true
+executions = [
+  { execution.type = "RunBuild", execution.params.build = "komodo-ui", enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "Build Core"
+enabled = true
+executions = [
+  { execution.type = "RunBuild", execution.params.build = "komodo-core", enabled = true }
 ]
 
 ##

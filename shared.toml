@@ -1,4 +1,14 @@
 [[repo]]
+name = "cicada/build"
+tags = ["shared"]
+[repo.config]
+git_provider = "forge.mogh.tech"
+git_account = "max"
+repo = "cicada/build"
+
+##
+
+[[repo]]
 name = "komodo/build"
 tags = ["shared"]
 [repo.config]
@@ -62,6 +72,28 @@ params.user_data = """
 curl -sSL https://raw.githubusercontent.com/moghtech/komodo/main/scripts/setup-periphery.py | \
   HOME=/root python3 - --version=v2.0.0
 """
+
+##
+
+[[resource_sync]]
+name = "cicada-dev"
+tags = ["shared"]
+[resource_sync.config]
+linked_repo = "cicada/build"
+resource_path = ["dev.toml"]
+managed = true
+match_tags = ["cicada", "dev"]
+
+##
+
+[[resource_sync]]
+name = "cicada-release"
+tags = ["shared"]
+[resource_sync.config]
+linked_repo = "cicada/build"
+resource_path = ["release.toml"]
+managed = true
+match_tags = ["cicada", "release"]
 
 ##
 

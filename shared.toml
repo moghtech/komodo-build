@@ -66,24 +66,24 @@ curl -sSL https://raw.githubusercontent.com/moghtech/komodo/main/scripts/setup-p
 ##
 
 [[resource_sync]]
-name = "dev"
+name = "komodo-dev"
 tags = ["shared"]
 [resource_sync.config]
 linked_repo = "komodo/build"
 resource_path = ["dev.toml"]
 managed = true
-match_tags = ["dev"]
+match_tags = ["komodo", "dev"]
 
 ##
 
 [[resource_sync]]
-name = "release"
+name = "komodo-release"
 tags = ["shared"]
 [resource_sync.config]
 linked_repo = "komodo/build"
 resource_path = ["release.toml"]
 managed = true
-match_tags = ["release"]
+match_tags = ["komodo", "release"]
 
 ##
 

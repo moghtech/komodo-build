@@ -1,6 +1,6 @@
 [[build]]
 name = "komodo-binaries-dev-aarch64"
-tags = ["dev", "binaries", "aarch64"]
+tags = ["komodo", "dev", "binaries", "aarch64"]
 [build.config]
 builder = "aarch64-builder"
 version = "2.0.0"
@@ -22,7 +22,7 @@ image_registry = [
 
 [[build]]
 name = "komodo-binaries-dev-x86_64"
-tags = ["dev", "binaries", "x86_64"]
+tags = ["komodo", "dev", "binaries", "x86_64"]
 [build.config]
 builder = "x86_64-builder"
 version = "2.0.0"
@@ -50,7 +50,7 @@ OPEN FOR INSTRUCTIONS
 Must run the following command on host to create the builder:
 'docker buildx create --name builder --use --bootstrap'
 """
-tags = ["dev", "cli"]
+tags = ["komodo", "dev", "cli"]
 [build.config]
 builder = "x86_64-builder"
 version = "2.0.0"
@@ -89,7 +89,7 @@ OPEN FOR INSTRUCTIONS
 Must run the following command on host to create the builder:
 'docker buildx create --name builder --use --bootstrap'
 """
-tags = ["dev", "core"]
+tags = ["komodo", "dev", "core"]
 [build.config]
 builder = "x86_64-builder"
 version = "2.0.0"
@@ -129,7 +129,7 @@ OPEN FOR INSTRUCTIONS
 Must run the following command on host to create the builder:
 'docker buildx create --name builder --use --bootstrap'
 """
-tags = ["dev", "periphery"]
+tags = ["komodo", "dev", "periphery"]
 [build.config]
 builder = "x86_64-builder"
 version = "2.0.0"
@@ -162,7 +162,7 @@ build_args = """
 
 [[build]]
 name = "komodo-ui-dev"
-tags = ["dev", "ui"]
+tags = ["komodo", "dev", "ui"]
 [build.config]
 builder = "x86_64-builder"
 version = "2.0.0"
@@ -183,8 +183,8 @@ image_registry = [
 ##
 
 [[repo]]
-name = "upload-binaries-dev"
-tags = ["dev", "binaries"]
+name = "upload-komodo-binaries-dev"
+tags = ["komodo", "dev", "binaries"]
 [repo.config]
 builder = "x86_64-builder"
 git_provider = "forge.mogh.tech"
@@ -200,8 +200,8 @@ bash ./upload-binaries.sh \
 ##
 
 [[procedure]]
-name = "build-dev"
-tags = ["dev"]
+name = "build-komodo-dev"
+tags = ["komodo", "dev"]
 
 [[procedure.config.stage]]
 name = "Build Binaries + UI"
@@ -219,13 +219,13 @@ executions = [
   { execution.type = "RunBuild", execution.params.build = "komodo-core-dev", enabled = true },
   { execution.type = "RunBuild", execution.params.build = "komodo-periphery-dev", enabled = true },
   { execution.type = "RunBuild", execution.params.build = "komodo-cli-dev", enabled = true },
-  { execution.type = "BuildRepo", execution.params.repo = "upload-binaries-dev", enabled = true }
+  { execution.type = "BuildRepo", execution.params.repo = "upload-komodo-binaries-dev", enabled = true }
 ]
 
 ##
 
 [[action]]
-name = "publish-dev"
+name = "publish-komodo-dev"
 tags = ["dev"]
 [action.config]
 file_contents = """
@@ -245,7 +245,7 @@ await komodo.write("UpdateVariableValue", {
 });
 console.log("Updated KOMODO_DEV_TAG to", TAG);
 
-const builds = await komodo.read("ListBuilds", { query: { tags: ["dev"] } });
+const builds = await komodo.read("ListBuilds", { query: { tags: ["komodo", "dev"] } });
 
 for (const build of builds) {
   await komodo.write("UpdateBuild", {
@@ -255,9 +255,9 @@ for (const build of builds) {
   console.log("Updated", build.name);
 }
 
-await komodo.write("CommitSync", { sync: "dev" });
-console.log("Committed changes to 'dev' Sync");
+await komodo.write("CommitSync", { sync: "komodo-dev" });
+console.log("Committed changes to 'komodo-dev' Sync");
 
-await komodo.execute("RunProcedure", { procedure: "build-dev" });
-console.log("Launched 'build-dev' Procedure");
+await komodo.execute("RunProcedure", { procedure: "build-komodo-dev" });
+console.log("Launched 'build-komodo-dev' Procedure");
 """

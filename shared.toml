@@ -76,17 +76,6 @@ curl -sSL https://raw.githubusercontent.com/moghtech/komodo/main/scripts/setup-p
 ##
 
 [[resource_sync]]
-name = "cicada-dev"
-tags = ["shared"]
-[resource_sync.config]
-linked_repo = "cicada/build"
-resource_path = ["dev.toml"]
-managed = true
-match_tags = ["cicada", "dev"]
-
-##
-
-[[resource_sync]]
 name = "cicada-release"
 tags = ["shared"]
 [resource_sync.config]

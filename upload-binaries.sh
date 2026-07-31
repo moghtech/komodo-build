@@ -27,11 +27,11 @@ upload() {
     docker cp $x86_64_id:/$bin_name ./$bin_name-x86_64
     curl --user mbecker20:$MOGH_FORGE_TOKEN \
         --upload-file ./$bin_name-x86_64 \
-        https://forge.mogh.tech/api/packages/komodo/generic/$bin_name/$KOMODO_VERSION-$TAG/$bin_name-x86_64
+        https://forge.mogh.tech/api/packages/public/generic/komodo-$bin_name/$KOMODO_VERSION-$TAG/$bin_name-x86_64
     docker cp $aarch64_id:/$bin_name ./$bin_name-aarch64
     curl --user mbecker20:$MOGH_FORGE_TOKEN \
         --upload-file ./$bin_name-aarch64 \
-        https://forge.mogh.tech/api/packages/komodo/generic/$bin_name/$KOMODO_VERSION-$TAG/$bin_name-aarch64
+        https://forge.mogh.tech/api/packages/public/generic/komodo-$bin_name/$KOMODO_VERSION-$TAG/$bin_name-aarch64
 }
 
 upload "periphery"

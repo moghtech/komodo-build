@@ -188,7 +188,7 @@ tags = ["komodo", "dev", "binaries"]
 [repo.config]
 builder = "x86_64-builder"
 git_provider = "forge.mogh.tech"
-repo = "komodo/build"
+repo = "public/komodo-build"
 on_clone.command = """
 bash ./upload-binaries.sh \
   [[KOMODO_DEV_TAG]] \

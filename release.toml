@@ -3,7 +3,7 @@ name = "komodo-binaries-aarch64"
 tags = ["komodo", "release", "binaries", "aarch64"]
 [build.config]
 builder = "aarch64-builder"
-version = "2.3.0"
+version = "2.3.2"
 auto_increment_version = false
 image_name = "komodo-binaries"
 image_tag = "aarch64"
@@ -21,7 +21,7 @@ name = "komodo-binaries-x86_64"
 tags = ["komodo", "release", "binaries", "x86_64"]
 [build.config]
 builder = "x86_64-builder"
-version = "2.3.0"
+version = "2.3.2"
 auto_increment_version = false
 image_name = "komodo-binaries"
 image_tag = "x86_64"
@@ -39,7 +39,7 @@ name = "komodo-cli"
 tags = ["komodo", "release", "cli"]
 [build.config]
 builder = "x86_64-builder"
-version = "2.3.0"
+version = "2.3.2"
 auto_increment_version = false
 include_latest_tag = false
 links = ["https://github.com/moghtech/komodo/pkgs/container/komodo-cli"]
@@ -61,7 +61,7 @@ name = "komodo-core"
 tags = ["komodo", "release", "core"]
 [build.config]
 builder = "x86_64-builder"
-version = "2.3.0"
+version = "2.3.2"
 auto_increment_version = false
 include_latest_tag = false
 repo = "moghtech/komodo"
@@ -82,7 +82,7 @@ name = "komodo-periphery"
 tags = ["komodo", "release", "periphery"]
 [build.config]
 builder = "x86_64-builder"
-version = "2.3.0"
+version = "2.3.2"
 auto_increment_version = false
 include_latest_tag = false
 repo = "moghtech/komodo"
@@ -103,7 +103,7 @@ name = "komodo-ui"
 tags = ["komodo", "release", "ui"]
 [build.config]
 builder = "x86_64-builder"
-version = "2.3.0"
+version = "2.3.2"
 auto_increment_version = false
 include_latest_tag = false
 repo = "moghtech/komodo"
@@ -182,7 +182,7 @@ tags = ["komodo", "release"]
 [action.config]
 file_contents = """
 const BRANCH = "main";
-const VERSION = "2.3.0";
+const VERSION = "2.3.2";
 const TAG = "release-1";
 
 await komodo.write("UpdateVariableValue", {
@@ -206,9 +206,6 @@ for (const build of builds) {
   });
   console.log("Updated", build.name);
 }
-
-await komodo.write("CommitSync", { sync: "komodo-release" });
-console.log("Committed changes to 'komodo-release' Sync");
 
 await komodo.execute("RunProcedure", { procedure: "build-komodo-release" });
 console.log("Launched 'build-komodo-release' Procedure");

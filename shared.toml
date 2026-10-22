@@ -2,9 +2,7 @@
 name = "cicada/build"
 tags = ["shared"]
 [repo.config]
-git_provider = "forge.mogh.tech"
-git_account = "max"
-repo = "public/cicada-build"
+repo = "moghtech/cicada-build"
 
 ##
 
@@ -12,9 +10,7 @@ repo = "public/cicada-build"
 name = "komodo/build"
 tags = ["shared"]
 [repo.config]
-git_provider = "forge.mogh.tech"
-git_account = "max"
-repo = "public/komodo-build"
+repo = "moghtech/komodo-build"
 
 ##
 

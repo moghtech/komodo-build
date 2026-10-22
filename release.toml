@@ -181,8 +181,8 @@ name = "publish-komodo-release"
 tags = ["komodo", "release"]
 [action.config]
 file_contents = """
-const BRANCH = "main";
-const VERSION = "2.3.3";
+const BRANCH = "2.3.4";
+const VERSION = "2.3.4";
 const TAG = "release-1";
 
 await komodo.write("UpdateVariableValue", {

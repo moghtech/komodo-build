@@ -49,7 +49,7 @@ params.security_group_ids = ["sg-0babe545ecfb49c9b"]
 params.user_data = """
 #!/bin/bash
 curl -sSL https://raw.githubusercontent.com/moghtech/komodo/main/scripts/setup-periphery.py | \
-  HOME=/root python3 - --version=v2.3.0
+  HOME=/root python3 - --version=v2.3.3
 """
 
 ##
@@ -70,7 +70,7 @@ params.security_group_ids = ["sg-0babe545ecfb49c9b"]
 params.user_data = """
 #!/bin/bash
 curl -sSL https://raw.githubusercontent.com/moghtech/komodo/main/scripts/setup-periphery.py | \
-  HOME=/root python3 - --version=v2.3.0
+  HOME=/root python3 - --version=v2.3.3
 """
 
 ##
